@@ -1,4 +1,4 @@
-name: OSV-Scanner
+name: OSV-Scanner # name
 
 on:
   pull_request:
