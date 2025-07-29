@@ -2,5 +2,22 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
+  ],
+  "prHeader": "MarekHeader",
+  "assignees": [
+    "marekboodt"
+  ],
+  "labels": ["dependencies-testlabel"],
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["docker"],
+      "labels": ["docker-testlabel"],
+      "assignees": ["marekboodt"]
+    },
+    {
+      "matchPackagePatterns": ["maven"],
+      "labels": ["maven-testlabel"],
+      "assignees": ["abc"]
+    }
   ]
 }
