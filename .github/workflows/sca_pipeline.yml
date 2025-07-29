@@ -19,15 +19,23 @@ permissions:
   contents: read
   security-events: write
 
+
 jobs:
   renovate-run:
     runs-on: ubuntu-latest
-    environment: dvpa   # <-- Add this line to reference your environment!
+    environment: dvpa
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: List repo files (debug)
+        run: ls -la
 
       - name: Run Renovate
         uses: renovatebot/github-action@v43.0.5
         with:
           token: ${{ secrets.RENOVATE_TOKEN }}
+        env:
+          LOG_LEVEL: debug
+          # Optionally, specify a config file if needed:
+          # RENOVATE_CONFIG_FILE: renovate.json
