@@ -18,3 +18,15 @@ permissions:
   actions: read
   contents: read
   security-events: write
+
+jobs:
+  renovate-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Renovate
+        uses: renovatebot/github-action@v43.0.5
+        with:
+          token: ${{ secrets.RENOVATE_TOKEN }}
