@@ -1,6 +1,3 @@
 {
-  "enabledManagers": ["pip"],
-  "pip": {
-    "fileMatch": ["^blog/requirements\\.txt$"]
-  }
+  "enabledManagers": ["pip"]
 }
