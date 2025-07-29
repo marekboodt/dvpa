@@ -22,6 +22,7 @@ permissions:
 jobs:
   renovate-run:
     runs-on: ubuntu-latest
+    environment: dvpa   # <-- Add this line to reference your environment!
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
