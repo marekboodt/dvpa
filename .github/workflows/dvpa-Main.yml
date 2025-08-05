@@ -26,7 +26,7 @@ jobs:
       language: python
       project_dir: ./src
       # non-prod has 'continue-on-error: true' all other environments will be stopped if the scans give an error.
-      environment: prod
+      environment: non-prod
 #    secrets:
 #      token: ${{ secrets.REUSABLEWORKFLOWACCESSDJANGOTOSECREPO }}
 
