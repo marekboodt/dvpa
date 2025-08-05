@@ -27,8 +27,8 @@ jobs:
       project_dir: ./src
       # non-prod has 'continue-on-error: true' all other environments will be stopped if the scans give an error.
       environment: non-prod
-#    secrets:
-#      token: ${{ secrets.REUSABLEWORKFLOWACCESSDJANGOTOSECREPO }}
+    secrets:
+      SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
 
 #  Prod-SAST-scan:
 #    uses: marekboodt/Security-Scanning-Repo/.github/workflows/sast-custom-workflow.yml@main
