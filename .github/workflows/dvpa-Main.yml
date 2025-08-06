@@ -24,7 +24,7 @@ jobs:
   NonProd-SAST-scan:
     uses: marekboodt/Security-Scanning-Repo/.github/workflows/sast-gh-action-workflow.yml@main
     with:
-      scantool: semgrep
+      scantool: semgrep # must be set one of these [semgrep, sonarqube, bearer, codeql] - XXX is the standard
       language: python # not necessary ?? 
       project_dir: ./src
       # non-prod has 'continue-on-error: true' all other environments will be stopped if the scans give an error.
