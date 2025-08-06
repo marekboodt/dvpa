@@ -21,7 +21,7 @@ permissions:
   security-events: write
    
 jobs:
-  NonProd-SAST-scan:
+  SAST-Scan:
     uses: marekboodt/Security-Scanning-Repo/.github/workflows/sast-gh-action-workflow.yml@main
     with:
       scantool: semgrep # must be set one of these [semgrep, sonarqube, bearer, codeql] - XXX is the standard
