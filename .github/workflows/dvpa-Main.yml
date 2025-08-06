@@ -38,7 +38,7 @@ jobs:
 #  Prod-SAST-scan:
 #    uses: marekboodt/Security-Scanning-Repo/.github/workflows/sast-custom-workflow.yml@main
 #    with:
-#      type: sast
+#      scantool: semgrep
 #      language: python
 #      project_dir: ./src
 #      # non-prod has 'continue-on-error: true' all other environments will be stopped if the scans give an error.
@@ -47,7 +47,7 @@ jobs:
 #  NonProd-SCA-scan:
 #    uses: marekboodt/Security-Scanning-Repo/.github/workflows/sca-workflow.yml@main
 #    with:
-#      type: sca
+#      scantool: semgrep
 #      language: python
 #      project_dir: ./
 #      # non-prod has 'continue-on-error: true' all other environments will be stopped if the scans give an error.
