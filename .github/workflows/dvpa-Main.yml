@@ -1,4 +1,4 @@
-name: Django SAST Pipeline
+name: Reusable SAST Pipeline
 
 ######## IMPORTANT ######## 
 # Variables to set:
@@ -25,15 +25,15 @@ jobs:
     uses: marekboodt/Security-Scanning-Repo/.github/workflows/sast-gh-action-workflow.yml@main
     with:
       scantool: codeql # must be set one of these [semgrep, sonarqube, bearer, codeql] - XXX is the standard
-#      language: python # not necessary ? 
+      language: python, javascript # best practice for CodeQL, can be left empty
       project_dir: ./src
-      # non-prod has 'continue-on-error: true' all other environments will be stopped if the scans give an error.
-      environment: non-prod
+      environment: non-prod   # non-prod has 'continue-on-error: true' all other environments will be stopped if the scans give an error.
     secrets:
       SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
+      CODEQL_TOKEN: ${{ secrets.CODEQL_TOKEN }} # not needed
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       BEARER_TOKEN: ${{ secrets.BEARER_TOKEN }}
-      CODEQL_TOKEN: ${{ secrets.CODEQL_TOKEN }}
+
 
 #  Prod-SAST-scan:
 #    uses: marekboodt/Security-Scanning-Repo/.github/workflows/sast-custom-workflow.yml@main
