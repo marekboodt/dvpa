@@ -30,6 +30,9 @@ jobs:
       environment: non-prod
     secrets:
       SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      BEARER_TOKEN: ${{ secrets.BEARER_TOKEN }}
+      CODEQL_TOKEN: ${{ secrets.CODEQL_TOKEN }}
 
 #  Prod-SAST-scan:
 #    uses: marekboodt/Security-Scanning-Repo/.github/workflows/sast-custom-workflow.yml@main
