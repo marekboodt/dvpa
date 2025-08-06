@@ -36,6 +36,7 @@ jobs:
 
   renovate:
     runs-on: ubuntu-latest
+    environment: dvpa
     steps:
       - name: Checkout
         uses: actions/checkout@v4.2.2
