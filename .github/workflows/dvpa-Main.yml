@@ -30,9 +30,8 @@ jobs:
       environment: non-prod   # non-prod has 'continue-on-error: true' all other environments will be stopped if the scans give an error.
     secrets:
       SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
-      CODEQL_TOKEN: ${{ secrets.CODEQL_TOKEN }} # not needed
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      BEARER_TOKEN: ${{ secrets.BEARER_TOKEN }} # not needed
+      SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
 
 
 #  Prod-SAST-scan:
