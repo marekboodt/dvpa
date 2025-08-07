@@ -32,7 +32,7 @@ jobs:
       SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
       CODEQL_TOKEN: ${{ secrets.CODEQL_TOKEN }} # not needed
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      BEARER_TOKEN: ${{ secrets.BEARER_TOKEN }}
+      BEARER_TOKEN: ${{ secrets.BEARER_TOKEN }} # not needed
 
 
 #  Prod-SAST-scan:
@@ -47,7 +47,6 @@ jobs:
 #  NonProd-SCA-scan:
 #    uses: marekboodt/Security-Scanning-Repo/.github/workflows/sca-workflow.yml@main
 #    with:
-#      scantool: semgrep
 #      language: python
 #      project_dir: ./
 #      # non-prod has 'continue-on-error: true' all other environments will be stopped if the scans give an error.
