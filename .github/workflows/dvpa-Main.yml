@@ -22,7 +22,7 @@ permissions:
    
 jobs:
   SAST-Scan:
-    uses: marekboodt/Security-Scanning-Repo/.github/workflows/sast-gh-action-workflow.yml@main
+    uses: marekboodt/Security-Scanning-Repo/.github/workflows/02-sast-workflow.yml@main
     with:
       scantool: bearer # must be set one of these [semgrep, sonarqube, bearer, codeql] - XXX is the standard
       language: python, javascript # best practice for CodeQL, CAN be left empty - how to use: language: language1, language2, languageN
