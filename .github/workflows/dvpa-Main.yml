@@ -21,7 +21,7 @@ permissions:
   security-events: write
    
 jobs:
-  SAST-Scan:
+  SAST-Scan-bearer:
     uses: marekboodt/Security-Scanning-Repo/.github/workflows/02-sast-workflow.yml@main
     with:
       scantool: bearer # must be set one of these [semgrep, sonarqube, bearer, codeql] - XXX is the standard
@@ -33,6 +33,29 @@ jobs:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
 
+  SAST-Scan-semgrep:
+  uses: marekboodt/Security-Scanning-Repo/.github/workflows/02-sast-workflow.yml@main
+  with:
+    scantool: semgrep # Options: [semgrep, sonarqube (coming soon), bearer, codeql]
+    # language: python, javascript # (Optional) For CodeQL, comma-separated list
+    project_dir: ./src
+    environment: non-prod # options: prod, non-prod | non-prod: does not block pipeline on findings (continue-on-error); prod: blocks pipeline if findings are found
+  secrets: # Set these as GitHub repository secrets or variables. If not using Semgrep or SonarQube, these can be left empty.
+    SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
+    SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
+
+  SAST-Scan-codeql:
+    uses: marekboodt/Security-Scanning-Repo/.github/workflows/02-sast-workflow.yml@main
+    with:
+      scantool: codeql # Options: [semgrep, sonarqube (coming soon), bearer, codeql]
+      # language: python, javascript # (Optional) For CodeQL, comma-separated list
+      project_dir: ./src
+      environment: non-prod # options: prod, non-prod | non-prod: does not block pipeline on findings (continue-on-error); prod: blocks pipeline if findings are found
+    secrets: # Set these as GitHub repository secrets or variables. If not using Semgrep or SonarQube, these can be left empty.
+      SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
 
   DAST-Scan:
     uses: marekboodt/Security-Scanning-Repo/.github/workflows/04-dast-workflow.yml@main
