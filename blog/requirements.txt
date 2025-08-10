@@ -6,7 +6,7 @@ Flask==1.1.4
 flask-mongoengine==1.0.0
 Flask-MySQL==1.5.1
 Flask-MySQLdb==0.2.0
-flask-peewee==3.0.4
+flask-peewee==3.0.6
 Flask-Script==2.0.6
 Flask-WTF==1.0.1
 ipdb==0.13.9
