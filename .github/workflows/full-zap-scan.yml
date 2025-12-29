@@ -30,13 +30,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r blog/requirements.txt
 
-      - name: Run Django migrations
-        run: python manage.py migrate
+      # - name: Run Django migrations
+      #   run: python manage.py migrate
 
-      - name: Run Django server in background
-        run: |
-          nohup python manage.py runserver 0.0.0.0:8000 &
-          sleep 10
+      # - name: Run Django server in background
+      #   run: |
+      #     nohup python manage.py runserver 0.0.0.0:8000 &
+      #     sleep 10
 
       - name: Wait for Django to be ready
         run: |
