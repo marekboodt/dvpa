@@ -1,14 +1,5 @@
 name: Reusable SAST Pipeline
 
-######## IMPORTANT ######## 
-# Variables to set:
-# scantool - must be set - [semgrep, sonarqube, bearer, codeql]
-# language - Must be set of the code must be set to know which Scanning Type / File will be used
-# project_dir - Must be set to knw know which Directory to scan, " ./ " will be the default. 
-# environment - Must be set to know if the pipeline should stop or continue on error - non-prod has 'continue-on-error: true' all other environments will be stopped if the scans give an error.
-  # non-prod has 'continue-on-error: true' all other environments will be stopped if the scans give an error-code that is not "0" !!!
-# secrets:
-  # SEMGREP_APP_TOKEN:
 on:
   push:
     branches:
@@ -24,7 +15,7 @@ permissions:
    
 jobs:
   SAST-Scan-semgrep: 
-    uses: marekboodt/Security-Scanning-Repo/.github/workflows/10-sast-workflow.yml@main
+    uses: marekboodt/Security-Scanning-Repo/.github/workflows/10-sast-workflow.yml@v1
     with:
       sast-scan-tool: semgrep 
       # language: python, javascript
@@ -36,7 +27,7 @@ jobs:
       SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
 
   SAST-Scan-bearer: 
-    uses: marekboodt/Security-Scanning-Repo/.github/workflows/10-sast-workflow.yml@main
+    uses: marekboodt/Security-Scanning-Repo/.github/workflows/10-sast-workflow.yml@v1
     with:
       sast-scan-tool: bearer 
       # language: python, javascript
@@ -48,7 +39,7 @@ jobs:
       SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
       
   SAST-Scan-codeql: 
-    uses: marekboodt/Security-Scanning-Repo/.github/workflows/10-sast-workflow.yml@main
+    uses: marekboodt/Security-Scanning-Repo/.github/workflows/10-sast-workflow.yml@v1
     with:
       sast-scan-tool: codeql 
       # language: python, javascript
@@ -58,29 +49,3 @@ jobs:
       SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
-
-
-
-
-# ======================== OLDER ONES ============================
-
-
-
-
-#  Prod-SAST-scan:
-#    uses: marekboodt/Security-Scanning-Repo/.github/workflows/sast-custom-workflow.yml@main
-#    with:
-#      scantool: semgrep
-#      language: python
-#      project_dir: ./src
-#      # non-prod has 'continue-on-error: true' all other environments will be stopped if the scans give an error.
-#      environment: prod
-
-#  NonProd-SCA-scan:
-#    uses: marekboodt/Security-Scanning-Repo/.github/workflows/sca-workflow.yml@main
-#    with:
-#      language: python
-#      project_dir: ./
-#      # non-prod has 'continue-on-error: true' all other environments will be stopped if the scans give an error.
-#      environment: non-prod
-      
